@@ -259,6 +259,16 @@ function HomePage() {
                 </div>
                 <span className="event-decoration" aria-hidden="true">02</span>
               </article>
+              <article className="event-card event-card-featured">
+                <div className="event-date event-date-gold"><strong>19</strong><span>NOV 2026</span></div>
+                <div className="event-details">
+                  <span className="event-status status-upcoming">Upcoming · details TBC</span>
+                  <h3>International Men’s Day Community Event</h3>
+                  <p>Community venue to be confirmed</p>
+                  <span className="event-meta">Time and event details to be confirmed</span>
+                </div>
+                <span className="event-decoration" aria-hidden="true">03</span>
+              </article>
             </div>
             <p className="events-footnote">These are editable sample event records, not verified event announcements.</p>
           </div>
