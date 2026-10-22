@@ -26,8 +26,9 @@ type ApplicationRecord = {
   created_at: string
 }
 
-const apiOrigin = import.meta.env.VITE_API_HOST
-  ? `https://${import.meta.env.VITE_API_HOST}`
+const apiHost = import.meta.env.VITE_API_HOST
+const apiOrigin = apiHost
+  ? `https://${apiHost.includes('.') ? apiHost : `${apiHost}.onrender.com`}`
   : ''
 
 const applicationTypes: { id: ApplicationType; label: string; description: string }[] = [
