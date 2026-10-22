@@ -444,11 +444,21 @@
 
 .programme-card {
   position: relative;
-  min-height: 263px;
-  padding: 23px 21px 49px;
+  min-height: 390px;
+  overflow: hidden;
   border: 1px solid #e3e6dc;
   background: #fffefa;
   transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.programme-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.programme-card-content {
+  padding: 18px 21px 54px;
 }
 
 .programme-card:hover {
@@ -460,7 +470,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 23px;
+  margin-bottom: 14px;
 }
 
 .programme-icon {
@@ -1070,11 +1080,18 @@
 
   .programme-card {
     min-height: auto;
-    padding: 18px 18px 45px;
+  }
+
+  .programme-image {
+    height: 180px;
+  }
+
+  .programme-card-content {
+    padding: 16px 18px 50px;
   }
 
   .programme-card-top {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .programme-icon {

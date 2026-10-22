@@ -8,6 +8,8 @@ const programmes = [
   {
     number: '01',
     title: 'Men and boys mentorship',
+    image: '/images/mba-mentorship.png',
+    imageAlt: 'A mentor talking with young men outdoors',
     description:
       'Create supportive spaces where boys and young men can learn, ask questions and grow with positive role models.',
     category: 'MENTORSHIP',
@@ -16,6 +18,8 @@ const programmes = [
   {
     number: '02',
     title: 'Positive masculinity',
+    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'A group of friends spending time together outdoors',
     description:
       'Encourage respect, responsible fatherhood, emotional wellbeing and positive relationships.',
     category: 'DIALOGUE',
@@ -24,6 +28,8 @@ const programmes = [
   {
     number: '03',
     title: 'Health and wellbeing',
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'A healthcare professional speaking with a patient',
     description:
       'Promote health awareness, HIV prevention education and healthy choices for men and boys.',
     category: 'HEALTH',
@@ -32,6 +38,8 @@ const programmes = [
   {
     number: '04',
     title: 'Safer communities',
+    image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'People gathered together at a community event',
     description:
       'Support gender equality and community action to prevent gender-based violence and substance abuse.',
     category: 'COMMUNITY',
@@ -173,13 +181,21 @@ function HomePage() {
             <div className="programme-grid">
               {programmes.map((programme) => (
                 <article className="programme-card" key={programme.number}>
-                  <div className="programme-card-top">
-                    <span className="programme-icon" aria-hidden="true">{programme.icon}</span>
-                    <span className="programme-number">{programme.number}</span>
+                  <img
+                    className="programme-image"
+                    src={programme.image}
+                    alt={programme.imageAlt}
+                    loading="lazy"
+                  />
+                  <div className="programme-card-content">
+                    <div className="programme-card-top">
+                      <span className="programme-icon" aria-hidden="true">{programme.icon}</span>
+                      <span className="programme-number">{programme.number}</span>
+                    </div>
+                    <p className="card-category">{programme.category}</p>
+                    <h3>{programme.title}</h3>
+                    <p className="programme-description">{programme.description}</p>
                   </div>
-                  <p className="card-category">{programme.category}</p>
-                  <h3>{programme.title}</h3>
-                  <p className="programme-description">{programme.description}</p>
                   <a className="card-arrow" href="#join" aria-label={`Get involved with ${programme.title}`}>
                     <span aria-hidden="true">↗</span>
                   </a>
