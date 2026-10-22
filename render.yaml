@@ -34,7 +34,7 @@ services:
         sync: false
 
   - type: web
-    name: mba-website
+    name: mba
     runtime: static
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist
