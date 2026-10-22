@@ -20,14 +20,28 @@ A responsive website for Men and Boys Advocates, a community-based organisation 
    npm install
    ```
 
-6. Start the local website:
+6. Create a local `.env` file from `.env.example`, configure a PostgreSQL
+   database, and replace the example admin credentials and session secret. Keep
+   `.env` private; it is excluded from Git.
+
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+
+7. Start the API in one terminal:
+
+   ```powershell
+   npm run dev:api
+   ```
+
+8. Start the local website in a second terminal:
 
    ```powershell
    npm run dev
    ```
 
-7. Open the local address printed in the terminal, usually `http://localhost:5173`.
-   Keep the terminal running while you work. Press **Ctrl+C** in the terminal to stop the website.
+9. Open the local address printed in the terminal, usually `http://localhost:5173`.
+   Keep both terminals running while you work. Press **Ctrl+C** in each terminal to stop them.
 
 ## Useful commands
 
@@ -36,35 +50,49 @@ npm run dev       # Start the development website
 npm run build     # Check TypeScript and create a production build
 npm run lint      # Check the code for common issues
 npm run preview   # Preview a production build locally
+npm test          # Run application validation tests
 ```
 
 ## Publish the website on Render
 
-This project includes a Render Blueprint file (`render.yaml`) that configures a
-static website and the page fallback needed for React Router.
+The Render Blueprint in `render.yaml` configures the static website, a Node API,
+and a PostgreSQL database. It also connects the website to the API and the API
+to the database.
 
-1. Create a GitHub account if you do not already have one, then create a **private**
-   repository for this project.
-2. In VS Code, open **Source Control** and choose **Initialize Repository**. Review
-   the listed files, commit your project, and use VS Code's **Publish to GitHub**
-   option to send it to the private repository. Do not add passwords, API keys or
-   other secrets to the repository.
-3. Create or sign in to your account at [render.com](https://render.com/).
-4. In the Render dashboard, select **New → Blueprint**, connect the GitHub
-   repository, and deploy the Blueprint. Render reads `render.yaml`, builds the
-   website, and provides its public `onrender.com` address.
-5. After publishing changes, commit and push them to GitHub; Render can rebuild
-   the website from the connected repository.
+1. In the Render dashboard, create or update the Blueprint connected to this
+   GitHub repository. Review the resources and environment variables before
+   applying changes.
+2. Set a unique `ADMIN_EMAIL` and strong `ADMIN_PASSWORD` when prompted. These
+   credentials protect the application inbox at `/admin`; change them only
+   through the Render service environment settings.
+3. Configure `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM` on the
+   `mba-api` service to enable application email notifications. Notifications go
+   to `info.112mba@gmail.com`; if SMTP is not configured, the form tells the
+   applicant that the application was saved but no notification was sent.
+4. Render can rebuild and deploy future website changes when they are pushed to
+   the connected GitHub branch.
 
-The live site is public. The current homepage has no database or form that stores
-personal information. Event records are samples; confirm them before announcing
-them. Connect a custom domain later through Render's dashboard after verifying
-that you control the domain.
+The API Blueprint allows requests from the current Render website host
+(`mba-website-r8ok.onrender.com`). Update `FRONTEND_HOST` on `mba-api` if the
+website's Render host changes.
+
+**Important database limitation:** the Blueprint uses Render's free PostgreSQL
+plan as requested. Render documents that free databases expire 30 days after
+creation, have no backups, and are deleted after a further 14-day grace period
+unless upgraded. Do not use this plan for long-term application records. Upgrade
+to a paid database or export the applications before expiration; free services
+can also sleep when idle.
+
+The forms collect names and contact details to review membership, volunteer and
+partnership applications. Staff can review or delete submissions from the
+password-protected `/admin` page. Before collecting real applications, MBA
+should review its privacy notice and retention process. Do not submit sensitive
+health information through these forms. Event records are samples; verify them
+before announcing them.
 
 ## Project notes
 
-- The homepage is the first implementation stage; additional website pages and the membership form will be added in later stages.
+- The homepage includes membership, volunteer and partnership applications, an authenticated admin inbox and optional email notifications.
 - The homepage banner uses the supplied mentorship photograph. The additional homepage photo and online fonts are illustrative/external resources.
 - The event cards are explicitly labelled sample content. Verify event details before publishing them as announcements.
-- No membership application is collected or stored yet. Database, administrator access and email notifications are not configured.
 - Official address, registration information, social media links, event details and office-bearer information remain to be confirmed.

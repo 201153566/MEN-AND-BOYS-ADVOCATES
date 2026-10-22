@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+import { AdminPage, ApplicationForms, type ApplicationType } from './Applications'
 import './App.css'
 
 const currentYear = new Date().getFullYear()
@@ -61,6 +62,7 @@ function BrandMark() {
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [applicationType, setApplicationType] = useState<ApplicationType>('membership')
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -282,12 +284,14 @@ function HomePage() {
               <p>Bring your time, experience or ideas. Together, we can help build a community where every young person can thrive.</p>
             </div>
             <div className="join-actions">
-              <a className="button button-gold" href="mailto:info.112mba@gmail.com?subject=Membership%20enquiry">Become a member <span aria-hidden="true">↗</span></a>
-              <a className="button button-outline-light" href="mailto:info.112mba@gmail.com?subject=Volunteer%20enquiry" id="volunteer">Volunteer with us</a>
-              <a className="button button-outline-light" href="mailto:info.112mba@gmail.com?subject=Partnership%20enquiry" id="partners">Partner with us</a>
+              <a className="button button-gold" href="#application-forms" onClick={() => setApplicationType('membership')}>Become a member <span aria-hidden="true">↗</span></a>
+              <a className="button button-outline-light" href="#application-forms" id="volunteer" onClick={() => setApplicationType('volunteer')}>Volunteer with us</a>
+              <a className="button button-outline-light" href="#application-forms" id="partners" onClick={() => setApplicationType('partnership')}>Partner with us</a>
             </div>
           </div>
         </section>
+
+        <ApplicationForms activeType={applicationType} onTypeChange={setApplicationType} />
       </main>
 
       <footer className="site-footer" id="contact">
@@ -319,7 +323,7 @@ function HomePage() {
         </div>
         <div className="site-container footer-bottom">
           <span>© {currentYear} Men and Boys Advocates</span>
-          <span>Privacy information will be provided before collecting personal details.</span>
+          <Link to="/admin">Admin sign in</Link>
         </div>
       </footer>
     </>
@@ -341,6 +345,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
