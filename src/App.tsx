@@ -18,8 +18,8 @@ const programmes = [
   {
     number: '02',
     title: 'Positive masculinity',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'A group of friends spending time together outdoors',
+    image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'A group of African children spending time together outdoors',
     description:
       'Encourage respect, responsible fatherhood, emotional wellbeing and positive relationships.',
     category: 'DIALOGUE',
@@ -28,8 +28,8 @@ const programmes = [
   {
     number: '03',
     title: 'Health and wellbeing',
-    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'A healthcare professional speaking with a patient',
+    image: 'https://images.unsplash.com/photo-1562173650-f61426fbe683?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'A young Black man outdoors',
     description:
       'Promote health awareness, HIV prevention education and healthy choices for men and boys.',
     category: 'HEALTH',
@@ -38,8 +38,8 @@ const programmes = [
   {
     number: '04',
     title: 'Safer communities',
-    image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'People gathered together at a community event',
+    image: 'https://images.unsplash.com/photo-1620464225966-8482645f2db1?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Men taking part in a community activity outdoors in South Africa',
     description:
       'Support gender equality and community action to prevent gender-based violence and substance abuse.',
     category: 'COMMUNITY',

@@ -457,6 +457,14 @@
   object-fit: cover;
 }
 
+.programme-card:nth-child(3) .programme-image {
+  object-position: center 22%;
+}
+
+.programme-card:nth-child(4) .programme-image {
+  object-position: center 22%;
+}
+
 .programme-card-content {
   padding: 18px 21px 54px;
 }
